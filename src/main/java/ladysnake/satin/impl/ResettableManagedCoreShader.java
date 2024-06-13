@@ -18,7 +18,7 @@
 package ladysnake.satin.impl;
 
 import com.google.common.base.Preconditions;
-import ladysnake.satin.Satin;
+import ladysnake.satin.SatinClient;
 import ladysnake.satin.api.managed.ManagedCoreShader;
 import ladysnake.satin.api.managed.uniform.SamplerUniform;
 import net.fabricmc.fabric.impl.client.rendering.FabricShaderProgram;
@@ -90,6 +90,6 @@ public final class ResettableManagedCoreShader extends ResettableManagedShaderBa
 
     @Override
     protected void logInitError(IOException e) {
-        Satin.LOGGER.error("Could not create shader program {}", this.getLocation(), e);
+        SatinClient.LOGGER.error("Could not create shader program {}", this.getLocation(), e);
     }
 }

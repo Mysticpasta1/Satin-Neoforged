@@ -80,7 +80,7 @@ public abstract class JsonEffectGlShaderMixin implements SamplerAccess {
             ),
             method = "<init>"
     )
-    Identifier constructProgramIdentifier(String arg, ResourceManager unused, String id) {
+    Identifier constructProgramIdentifier(String id, String arg, ResourceManager resourceManager) {
         if (!id.contains(":")) {
             return new Identifier(arg);
         }
@@ -101,7 +101,7 @@ public abstract class JsonEffectGlShaderMixin implements SamplerAccess {
             ),
             method = "loadEffect"
     )
-    private static Identifier constructProgramIdentifier(String arg, ResourceManager unused, ShaderStage.Type shaderType, String id) {
+    private static Identifier constructProgramIdentifier(String id, String arg, ResourceManager unused, ShaderStage.Type shaderType) {
         if (!arg.contains(":")) {
             return new Identifier(arg);
         }

@@ -22,7 +22,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import ladysnake.satin.Satin;
+import ladysnake.satin.SatinClient;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.GlProgramManager;
 import net.minecraft.client.gl.GlUniform;
@@ -58,7 +58,7 @@ public final class ShaderPrograms {
      */
     @API(status = MAINTAINED)
     public static void useShader(int program) {
-        if (Satin.areShadersDisabled()) {
+        if (SatinClient.areShadersDisabled()) {
             return;
         }
 
@@ -77,7 +77,7 @@ public final class ShaderPrograms {
      */
     @API(status = EXPERIMENTAL)
     public static void setAttribValue(int program, String attribName, IntConsumer operation) {
-        if (Satin.areShadersDisabled() || program == 0) {
+        if (SatinClient.areShadersDisabled() || program == 0) {
             return;
         }
 
@@ -99,7 +99,7 @@ public final class ShaderPrograms {
      */
     @API(status = EXPERIMENTAL)
     public static void setUniformValue(int program, String uniformName, IntConsumer operation) {
-        if (Satin.areShadersDisabled() || program == 0) {
+        if (SatinClient.areShadersDisabled() || program == 0) {
             return;
         }
 
@@ -118,7 +118,7 @@ public final class ShaderPrograms {
      */
     @API(status = STABLE)
     public static void setUniform(int program, String uniformName, int value) {
-        if (Satin.areShadersDisabled() || program == 0) {
+        if (SatinClient.areShadersDisabled() || program == 0) {
             return;
         }
 
@@ -137,7 +137,7 @@ public final class ShaderPrograms {
      */
     @API(status = EXPERIMENTAL)
     public static void setUniform(int program, String uniformName, float value) {
-        if (Satin.areShadersDisabled() || program == 0) {
+        if (SatinClient.areShadersDisabled() || program == 0) {
             return;
         }
 
@@ -156,7 +156,7 @@ public final class ShaderPrograms {
      */
     @API(status = EXPERIMENTAL)
     public static void setUniform(int program, String uniformName, FloatBuffer mat4) {
-        if (Satin.areShadersDisabled() || program == 0) {
+        if (SatinClient.areShadersDisabled() || program == 0) {
             return;
         }
 

@@ -17,7 +17,7 @@
  */
 package ladysnake.satin.impl;
 
-import ladysnake.satin.Satin;
+import ladysnake.satin.SatinClient;
 import ladysnake.satin.api.managed.ManagedFramebuffer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
@@ -48,7 +48,7 @@ public final class FramebufferWrapper implements ManagedFramebuffer {
         } else {
             this.wrapped = shaderEffect.getSecondaryTarget(this.name);
             if (this.wrapped == null) {
-                Satin.LOGGER.warn("No target framebuffer found with name {} in shader {}", this.name, shaderEffect.getName());
+                SatinClient.LOGGER.warn("No target framebuffer found with name {} in shader {}", this.name, shaderEffect.getName());
             }
         }
     }

@@ -18,7 +18,7 @@
 package ladysnake.satin.impl;
 
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
-import ladysnake.satin.Satin;
+import ladysnake.satin.SatinClient;
 import ladysnake.satin.api.event.ResolutionChangeCallback;
 import ladysnake.satin.api.managed.ManagedCoreShader;
 import ladysnake.satin.api.managed.ManagedShaderEffect;
@@ -114,7 +114,7 @@ public final class ReloadableShaderEffectManager implements ShaderEffectManager,
 
     @Override
     public void onResolutionChanged(int newWidth, int newHeight) {
-        if (!Satin.areShadersDisabled() && !managedShaders.isEmpty()) {
+        if (!SatinClient.areShadersDisabled() && !managedShaders.isEmpty()) {
             for (ResettableManagedShaderBase<?> ss : managedShaders) {
                 if (ss.isInitialized()) {
                     ss.setup(newWidth, newHeight);

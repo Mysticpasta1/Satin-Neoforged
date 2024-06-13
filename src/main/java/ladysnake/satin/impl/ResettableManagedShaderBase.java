@@ -17,7 +17,7 @@
  */
 package ladysnake.satin.impl;
 
-import ladysnake.satin.Satin;
+import ladysnake.satin.SatinClient;
 import ladysnake.satin.api.managed.uniform.Uniform1f;
 import ladysnake.satin.api.managed.uniform.Uniform1i;
 import ladysnake.satin.api.managed.uniform.Uniform2f;
@@ -118,7 +118,7 @@ public abstract class ResettableManagedShaderBase<S extends AutoCloseable> imple
         if (this.shader != null) {
             boolean found = setupUniform(ret, shader);
             if (!found) {
-                Satin.LOGGER.warn("No {} found with name {} in shader {}", uniformKind, uniformName, this.location);
+                SatinClient.LOGGER.warn("No {} found with name {} in shader {}", uniformKind, uniformName, this.location);
             }
         }
         uniformMap.put(uniformName, ret);

@@ -18,7 +18,7 @@
 package ladysnake.satin.impl;
 
 import com.mojang.blaze3d.platform.GlStateManager;
-import ladysnake.satin.Satin;
+import ladysnake.satin.SatinClient;
 import ladysnake.satin.api.util.ShaderLinkException;
 import ladysnake.satin.api.util.ShaderLoader;
 import net.minecraft.resource.ResourceManager;
@@ -65,7 +65,7 @@ public final class ValidatingShaderLoader implements ShaderLoader {
             ARBShaderObjects.glAttachObjectARB(programId, vertexShaderId);
             String log = glGetShaderInfoLog(vertexShaderId, 1024);
             if (!log.isEmpty()) {
-                Satin.LOGGER.error("Could not compile vertex shader {}: {}", vertexLocation, log);
+                SatinClient.LOGGER.error("Could not compile vertex shader {}: {}", vertexLocation, log);
             }
         }
 
@@ -77,7 +77,7 @@ public final class ValidatingShaderLoader implements ShaderLoader {
             ARBShaderObjects.glAttachObjectARB(programId, fragmentShaderId);
             String log = glGetShaderInfoLog(fragmentShaderId, 1024);
             if (!log.isEmpty()) {
-                Satin.LOGGER.error("Could not compile fragment shader {}: {}", fragmentLocation, log);
+                SatinClient.LOGGER.error("Could not compile fragment shader {}: {}", fragmentLocation, log);
             }
         }
 
@@ -100,7 +100,7 @@ public final class ValidatingShaderLoader implements ShaderLoader {
         // validate the program
         glValidateProgram(programId);
         if (glGetProgrami(programId, GL_VALIDATE_STATUS) == 0) {
-            Satin.LOGGER.warn("Warning validating Shader code: {}", glGetProgramInfoLog(programId, 1024));
+            SatinClient.LOGGER.warn("Warning validating Shader code: {}", glGetProgramInfoLog(programId, 1024));
         }
 
         return programId;

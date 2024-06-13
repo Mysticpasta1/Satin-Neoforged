@@ -19,7 +19,7 @@ package ladysnake.satin.impl;
 
 import com.google.common.base.Preconditions;
 import com.mojang.blaze3d.systems.RenderSystem;
-import ladysnake.satin.Satin;
+import ladysnake.satin.SatinClient;
 import ladysnake.satin.api.managed.ManagedFramebuffer;
 import ladysnake.satin.api.managed.ManagedShaderEffect;
 import ladysnake.satin.api.managed.ShaderEffectManager;
@@ -260,7 +260,7 @@ public final class ResettableManagedShaderEffect extends ResettableManagedShader
 
     @Override
     protected void logInitError(IOException e) {
-        Satin.LOGGER.error("Could not create screen shader {}", this.getLocation(), e);
+        SatinClient.LOGGER.error("Could not create screen shader {}", this.getLocation(), e);
     }
 
     private @Nullable PostEffectProcessor getShaderOrLog() {
