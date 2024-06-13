@@ -19,15 +19,19 @@ package ladysnake.satin;
 
 import ladysnake.satin.api.event.ResolutionChangeCallback;
 import ladysnake.satin.impl.ReloadableShaderEffectManager;
-import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apiguardian.api.API;
 
 import static org.apiguardian.api.API.Status.STABLE;
 
-public class Satin implements ClientModInitializer {
+@Mod.EventBusSubscriber(modid = Satin.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+public class Satin {
     public static final String MOD_ID = "satin";
     public static final Logger LOGGER = LogManager.getLogger("Satin");
 
@@ -41,12 +45,11 @@ public class Satin implements ClientModInitializer {
         return false;
     }
 
-    @Override
-    public void onInitializeClient() {
+    @SubscribeEvent
+    public static void onInitializeClient(FMLClientSetupEvent event) {
         ResolutionChangeCallback.EVENT.register(ReloadableShaderEffectManager.INSTANCE);
         if (FabricLoader.getInstance().isModLoaded("optifabric")) {
             LOGGER.warn("[Satin] Optifine present in the instance, custom entity post process shaders will not work");
         }
     }
-
 }
