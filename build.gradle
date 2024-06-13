@@ -66,25 +66,6 @@ dependencies {
 
 }
 
-publishing {
-    publications {
-        create("relocation", MavenPublication) {
-            pom {
-                // Old artifact coordinates
-                groupId = "io.github.ladysnake"
-
-                distributionManagement {
-                    relocation {
-                        // New artifact coordinates
-                        groupId = "org.ladysnake"
-                        message = "groupId has been changed"
-                    }
-                }
-            }
-        }
-    }
-}
-
 processResources {
     // define properties that can be used during resource processing
     inputs.property "version", project.version
